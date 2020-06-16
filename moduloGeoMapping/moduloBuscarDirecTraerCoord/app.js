@@ -34,7 +34,5 @@ class ApiBuscarDirecTraerCoord{
     }
 }
 
-module.exports = {
-    ApiBuscarDirecTraerCoord
-}
+module.exports.ApiBuscarDirecTraerCoord = ApiBuscarDirecTraerCoord
 

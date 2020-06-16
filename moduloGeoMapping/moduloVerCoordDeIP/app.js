@@ -28,6 +28,4 @@ class ApiVerCoordDeIP{
     }
 }
 
-module.exports = {
-    ApiVerCoordDeIP,
-}
+module.exports.ApiVerCoordDeIP = ApiVerCoordDeIP
