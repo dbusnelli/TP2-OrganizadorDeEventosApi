@@ -1,17 +1,4 @@
-
-const {ApiBuscarDirecTraerCoord} = require ('./moduloBuscarDirecTraerCoord/app.js')
-const {ApiVerCoordDeIP} = require ('./moduloVerCoordDeIP/app.js')
-const calcularDistancia = require ('./calcularDistancia.js')
-
-
-const API_KEY_apiVerCoordDeIP = 'aba93c5572f6942f643eed84c9963f14'
-const API_KEY_apiBuscarDirecTraerCoord = 'SWADq6EQKQd_G17gkEUqSYUoKt70r4F56swtj-QbiEo'
-
-
-const apiCoordIP = new ApiVerCoordDeIP(API_KEY_apiVerCoordDeIP)
-const apiBuscarDirec = new ApiBuscarDirecTraerCoord(API_KEY_apiBuscarDirecTraerCoord)
-
-async function test(){
+/*async function test(){
 
     //--Al crear un evento--
 
@@ -33,6 +20,4 @@ async function test(){
 
 
     console.log('La distancia a la que esta el evento es de '+distancia+' kilometros')
-}
-
-test()
+}*/
