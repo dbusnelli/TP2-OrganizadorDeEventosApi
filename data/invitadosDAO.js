@@ -1,15 +1,15 @@
-class EventosDAO {
+class InvitadosDAO {
 
     constructor() {
-        eventos = []
+        invitados = []
         proxId = 0
     }
 
-    async agregar(nuevoEvento) {
+    async agregar(nuevoInvitado) {
         this.proxId++
-        nuevoEvento.id = this.proxId
-        this.eventos.push(nuevoEvento)
-        return nuevoEvento
+        nuevoInvitado.id = this.proxId
+        this.invitados.push(nuevoInvitado)
+        return nuevoInvitado
     }
 
     async getAll(){
@@ -31,5 +31,5 @@ class EventosDAO {
 }
 
 export {
-    EventosDAO
+    InvitadosDAO
 }

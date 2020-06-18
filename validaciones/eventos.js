@@ -7,9 +7,9 @@ function validarEvento(evento){
         direccion: Joi.string().alphanum().min(1).required(),
         fecha: Joi.date().iso().required(),
         creador: Joi.string().alphanum().min(1).required(),
-        contacto: Joi.string().email().max(999).required(),
+        contacto: Joi.string().email().max(999).required()
     }
-    const { error } = Joi.validate(estudiante, estudianteSchema)
+    const { error } = Joi.validate(evento, eventoSchema)
     if (error) {
         throw { message: error.message }
     }
