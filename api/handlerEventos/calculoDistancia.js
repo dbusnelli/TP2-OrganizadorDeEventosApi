@@ -1,9 +1,9 @@
-import {ApiBuscarDirecTraerCoord} from ('../../moduloGeoMapping/moduloBuscarDirecTraerCoord/app.js')
-import {ApiVerCoordDeIP} from ('../../moduloGeoMapping/moduloVerCoordDeIP/app.js')
+import {ApiBuscarDirecTraerCoord} from '../../moduloGeoMapping/moduloBuscarDirecTraerCoord/app.js'
+import {ApiVerCoordDeIP} from '../../moduloGeoMapping/moduloVerCoordDeIP/app.js'
 import calcularDistancia from '../../moduloGeoMapping/calcularDistancia'
 
 
-import apiKeys from ('../apiKeys.js')
+import apiKeys from '../../apiKeys'
 const API_KEY_apiVerCoordDeIP = apiKeys.API_KEY_apiVerCoordDeIP
 const API_KEY_apiBuscarDirecTraerCoord = apiKeys.API_KEY_apiBuscarDirecTraerCoord
 
