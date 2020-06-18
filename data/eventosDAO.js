@@ -25,7 +25,7 @@ class EventosDAO {
     }
 
     async getNuevoID(){
-        return this.eventos.length
+        return proxId
     }
 
 }

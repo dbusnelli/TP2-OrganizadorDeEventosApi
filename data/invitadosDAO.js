@@ -13,19 +13,19 @@ class InvitadosDAO {
     }
 
     async getAll(){
-        return eventos
+        return invitados
     }
 
     async getById(id) {
-        const buscado = eventos.find(e => e.id == id)
+        const buscado = invitados.find(e => e.id == id)
         if (!buscado) {
-            throw 'evento no encontrado con id ' + id
+            throw 'invitado no encontrado con id ' + id
         }
         return [buscado]
     }
 
     async getNuevoID(){
-        return this.eventos.length
+        return proxId
     }
 
 }
