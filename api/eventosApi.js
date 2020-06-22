@@ -1,15 +1,11 @@
 import validarEvento from '../validaciones/eventos'
+import validarInvitado from '../validaciones/invitados'
 import EventosDAO from '../data/eventosDAO'
 import InvitadosDAO from '../data/invitadosDAO'
 
 
 import notificar from './handlerEventos/notificador'
 import calcularDistancia from './handlerEventos/calculoDistancia'
-
-
-import Evento from '../models/evento'
-import Invitado from '../models/invitado'
-
 
 
 class EventosApi {
@@ -22,9 +18,7 @@ class EventosApi {
         
         try {
 
-            let id = this.eventosDAO.getNuevoID()
-
-            eventoNuevo = new Evento(id,nombre,direccion,fecha,creador,contacto)
+            eventoNuevo = {id:"",nombre:nombre,direccion:direccion,fecha:fecha,creador:creador,contacto:contacto}
             await validarEvento(eventoNuevo)
 
             await this.agregar(eventoNuevo)
@@ -36,7 +30,7 @@ class EventosApi {
         return eventoNuevo
     }
 
-    async #agregar(eventoNuevo) {
+    async agregar(eventoNuevo) {
         this.eventosDAO.add(eventoNuevo)
     }
 
@@ -48,13 +42,12 @@ class EventosApi {
             
             evento = await this.eventosDAO.getById(idEvento)
 
-            let id = this.invitadosDAO.getNuevoID()
-            invitadoNuevo = await new Invitado(id,idEvento,nombreInvitado,contactoInvitado)
+            invitadoNuevo = {id:"",idEvento:idEvento,nombre:nombreInvitado,contacto:contactoInvitado}
             await validarInvitado(invitadoNuevo)
             await this.agregar(invitadoNuevo)
 
-            let mensaje = evento.toString()
-
+            let mensaje = "Ha sido invitado al evento "+evento.nombre+" el dia..."
+            
             notificar(contactoInvitado,mensaje)
 
         } catch (error) {

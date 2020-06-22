@@ -12,6 +12,15 @@ class EventosDAO {
         return nuevoEvento
     }
 
+    async eliminarEvento(id){
+        const index = eventos.findIndex(e => e.id == id)
+        if(index == -1){
+            throw 'evento para eliminar no encontrado con id ' + id
+        }
+
+        eventos.splice(index,1)
+    }
+
     async getAll(){
         return eventos
     }
@@ -24,11 +33,13 @@ class EventosDAO {
         return [buscado]
     }
 
-    async getNuevoID(){
-        return proxId
-    }
-
 }
+
+
+class Evento{
+    
+}
+
 
 export {
     EventosDAO

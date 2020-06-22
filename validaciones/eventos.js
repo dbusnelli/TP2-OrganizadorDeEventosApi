@@ -2,7 +2,7 @@ import Joi from '@hapi/joi'
 
 function validarEvento(evento){
     const eventoSchema = {
-        id: Joi.number().integer().min(0),
+        //id: Joi.number().integer().min(0),
         nombre: Joi.string().alphanum().min(1).required(),
         direccion: Joi.string().alphanum().min(1).required(),
         fecha: Joi.date().iso().required(),
