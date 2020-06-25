@@ -1,38 +1,29 @@
 import validarEvento from '../validaciones/eventos'
 import validarInvitado from '../validaciones/invitados'
-import EventosDAO from '../data/eventosDAO'
-import InvitadosDAO from '../data/invitadosDAO'
-
 
 import notificar from './handlerEventos/notificador'
 import calcularDistancia from './handlerEventos/calculoDistancia'
+import eliminarEvento from './eliminarEvento.js'
+import CrearEvento from './crearEvento.js'
 
 
 class EventosApi {
-    eventosDAO = new EventosDAO()
-    invitadosDAO = new InvitadosDAO()
-
-    //----Agregar un Evento----
-
-    async crearEvento(nombre,direccion,fecha,creador,contacto){
-        
-        try {
-
-            eventoNuevo = {id:"",nombre:nombre,direccion:direccion,fecha:fecha,creador:creador,contacto:contacto}
-            await validarEvento(eventoNuevo)
-
-            await this.agregar(eventoNuevo)
-
-        } catch (error) {
-            console.log(error)
-        }
-
-        return eventoNuevo
+    constructor(eventosDAO, invitadosDAO) {
+        this.eventosDAO = eventosDAO
+        this.invitadosDAO = invitadosDAO
+        this.creadorEventos = new CrearEvento(eventosDAO, validarEvento)
     }
 
-    async agregar(eventoNuevo) {
-        this.eventosDAO.add(eventoNuevo)
+    async crearEvento(evento){ 
+        //eventoNuevo = {id:"",nombre:nombre,direccion:direccion,fecha:fecha,creador:creador,contacto:contacto}
+        this.creadorEventos.run(evento)
     }
+
+    async eliminar(idEvento) {
+        eliminarEvento(this.eventosDAO, this.invitadosDAO, idEvento)
+    }
+
+
 
     //----Agregar un Invitado----
 
@@ -56,12 +47,10 @@ class EventosApi {
 
     }
 
-
     //----Ver distancia del Evento  y  Confirmar Asistencia----
 
     async verDistancia(idInvitado){
         try {
-            
             let evento = this.eventosDAO.getById(invitado.getIdEvento())
 
             let distancia = calcularDistancia(evento.getDireccion());
@@ -74,7 +63,6 @@ class EventosApi {
 
     async confirmarAsistencia(idInvitado){
         try {
-
             let invitado = this.invitadosDAO.getById(idInvitado)
             invitado.confirmarAsistencia()
 

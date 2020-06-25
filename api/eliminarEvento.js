@@ -1,6 +1,3 @@
-import EventosDAO from '../data/eventosDAO'
-import InvitadosDAO from '../data/invitadosDAO'
-
 import notificar from './handlerEventos/notificador'
 
 async function eliminarEvento(eventosDAO,invitadosDAO,idEvento){
