@@ -2,9 +2,8 @@
   "name": "mail",
   "version": "1.0.0",
   "description": "modulo que manda mails",
-  "main": "main.js",
   "scripts": {
-    "test": "node test2.js"
+    "test": "node testSend.js"
   },
   "author": "gabriel",
   "license": "ISC",
