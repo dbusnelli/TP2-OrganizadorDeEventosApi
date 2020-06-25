@@ -1,5 +1,0 @@
-api/eventosAPI
-metodo confirmarAsistencia clase propia
-invitarGente clase propia
-llamar clase desde eventos api
-invitadordegente.invitar
