@@ -4,8 +4,8 @@ const leer = require('./leer.js')
 
 const mail = new Mail(leer('./auth/direcci.on'),leer('./auth/pa.ss'))
 
-function enviarMail(contacto,mensaje){
-    mail.send(contacto,'INVITACION A EVENTO!!',mensaje)
+function enviarMail(contacto,asunto,mensaje){
+    mail.send(contacto,asunto,mensaje)
 }
 
 export {
