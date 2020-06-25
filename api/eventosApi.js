@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {validarEvento} from '../validaciones/eventos.js'
 import {validarInvitado} from '../validaciones/invitados.js'
 
@@ -5,7 +6,15 @@ import {notificar} from './handlerEventos/notificador.js'
 import {calcDistancia} from './handlerEventos/calculoDistancia.js'
 import {eliminarEvento} from './eliminarEvento.js'
 import {CrearEvento} from './crearEvento.js'
+=======
+import {validarEvento} from '../validaciones/eventos'
+import validarInvitado from'../validaciones/invitados'
 
+import notificar from '../mail/send.js'
+import calcularDistancia from './handlerEventos/calculoDistancia'
+import eliminarEvento from  './eliminarEvento.js'
+import CrearEvento from './crearEvento.js'
+>>>>>>> c98ea8864616c44e1f04afc0be03bb483eff4fac
 
 class EventosApi {
     constructor(eventosDAO, invitadosDAO) {
@@ -15,7 +24,6 @@ class EventosApi {
     }
 
     async crearEvento(evento){ 
-        //eventoNuevo = {id:"",nombre:nombre,direccion:direccion,fecha:fecha,creador:creador,contacto:contacto}
         this.creadorEventos.run(evento)
     }
 
@@ -39,7 +47,7 @@ class EventosApi {
 
             let mensaje = "Ha sido invitado al evento "+evento.nombre+" el dia..."
             
-            notificar(contactoInvitado,mensaje)
+            notificar(contactoInvitado,'invitación a evento',mensaje)
 
         } catch (error) {
             console.log(error)
@@ -74,6 +82,6 @@ class EventosApi {
     }
 }
 
-export {
+export default{
     EventosApi
 }

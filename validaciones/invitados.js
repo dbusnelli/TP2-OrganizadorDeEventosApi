@@ -1,5 +1,4 @@
-import Joi from '@hapi/joi'
-
+import Joi from 'joi'
 function validarInvitado(invitado){
     const invitadoSchema = {
         //id: Joi.number().integer().min(0),
@@ -12,8 +11,4 @@ function validarInvitado(invitado){
         throw { message: error.message }
     }
 }
-
-
-export {
-    validarInvitado
-}
+export default{validarInvitado}

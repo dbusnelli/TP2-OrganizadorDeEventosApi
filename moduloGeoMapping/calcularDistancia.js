@@ -1,11 +1,11 @@
 async function calcularDistancia(coord1,coord2)
 {
-    lat1 = coord1[0];
-    lat2 = coord2[0];
-    lon1 = coord1[1];
-    lon2 = coord2[1];
+    let lat1 = coord1[0];
+    let lat2 = coord2[0];
+    let lon1 = coord1[1];
+    let lon2 = coord2[1];
 
-    rad = function(x) {return x*Math.PI/180;}
+    let rad = function(x) {return x*Math.PI/180;}
     var R = 6378.137; //Radio de la tierra en km
     var dLat = rad( lat2 - lat1 );
     var dLong = rad( lon2 - lon1 );
@@ -15,6 +15,6 @@ async function calcularDistancia(coord1,coord2)
     return d.toFixed(3); //Retorna tres decimales
 }
 
-export {
+export default{
     calcularDistancia
 }

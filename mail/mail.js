@@ -2,15 +2,15 @@ const nodemailer = require('nodemailer');
 
 class Mail{
   constructor(user,pass,domain='gmail'){
-    // cambie el constructor y puse setters para las validaciones
     this.setUser(user)
     this.setPass(pass)
-    // por ahi tendria que validar el dominio tambien
     this.domain = domain;
   }
+  toString(){
+    return this.user
+  }
   setPass(pass){
-    // antes me equivoque y le puse || en vez de &&
-    if(pass!='' && typeof stringValue){
+    if(pass!='' && typeof pass){
       this.pass=pass
     }else{
       throw 'contraseña vacia'
@@ -40,8 +40,16 @@ class Mail{
     }
   }
 
-  send(_to,_subject=' ',_text=' '){
+  validateText(text,error){
+    if(text==error){
+      throw 'el '+error+' no puede estar vacio'
+    }
+  }
+
+  send(_to,_subject='asunto',_text='mensaje'){
     this.validateArray(_to)
+    this.validateText(_subject,'asunto')
+    this.validateText(_text,'mensaje')
     const send = {
       options: {
         from: this.user,
@@ -56,20 +64,12 @@ class Mail{
           pass: this.pass
         }
       }),
-      // supuestamente si es json no se puede tener una variable function
       validate: function(error, info){
         if (error) {
           throw error;
-        } else {
-          console.log('Email sent: ' + info.response)
-          // no se como hacer para pasar esto de otra forma
-          // por ahi puedo agregar el info.response a un log.txt o algo asi
         }
       }
     };
-    // no se si dejar el objeto este asi porque por ahi por el
-    // hecho de que es un objeto y no una funcion no puedo
-    // poner el email sent de otra manera
     send.transport.sendMail(send.options,send.validate);
   }
 }

@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi'
+const Joi = require('@hapi/joi')
 
 function validarEvento(evento){
     const eventoSchema = {
@@ -16,6 +16,4 @@ function validarEvento(evento){
 }
 
 
-export {
-    validarEvento
-}
+export default{validarEvento}
