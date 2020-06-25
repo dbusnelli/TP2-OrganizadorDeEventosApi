@@ -1,8 +1,8 @@
 class EventosDAO {
 
     constructor() {
-        eventos = []
-        proxId = 0
+        this.eventos = []
+        this.proxId = 0
     }
 
     async agregar(nuevoEvento) {

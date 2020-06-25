@@ -1,34 +1,30 @@
-<<<<<<< HEAD
-import {validarEvento} from '../validaciones/eventos.js'
-import {validarInvitado} from '../validaciones/invitados.js'
+import validarEvento from '../validaciones/eventos.js'
+import validarInvitado from '../validaciones/invitados.js'
 
 import {notificar} from './handlerEventos/notificador.js'
 import {calcDistancia} from './handlerEventos/calculoDistancia.js'
 import {eliminarEvento} from './eliminarEvento.js'
 import {CrearEvento} from './crearEvento.js'
-=======
-import {validarEvento} from '../validaciones/eventos'
-import validarInvitado from'../validaciones/invitados'
-
-import notificar from '../mail/send.js'
-import calcularDistancia from './handlerEventos/calculoDistancia'
-import eliminarEvento from  './eliminarEvento.js'
-import CrearEvento from './crearEvento.js'
->>>>>>> c98ea8864616c44e1f04afc0be03bb483eff4fac
+import {GetterEventos} from './GetterEventos.js'
 
 class EventosApi {
     constructor(eventosDAO, invitadosDAO) {
         this.eventosDAO = eventosDAO
         this.invitadosDAO = invitadosDAO
         this.creadorEventos = new CrearEvento(eventosDAO, validarEvento)
+        this.getterEventos = new GetterEventos(eventosDAO)
     }
 
     async crearEvento(evento){ 
-        this.creadorEventos.run(evento)
+        return this.creadorEventos.run(evento)
     }
 
     async eliminar(idEvento) {
         eliminarEvento(this.eventosDAO, this.invitadosDAO, idEvento)
+    }
+
+    async getAll() {
+        return this.getterEventos.obtenerTodos()
     }
 
 
@@ -82,6 +78,6 @@ class EventosApi {
     }
 }
 
-export default{
+export {
     EventosApi
 }

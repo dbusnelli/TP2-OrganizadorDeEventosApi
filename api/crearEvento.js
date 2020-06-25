@@ -9,7 +9,7 @@ class CrearEvento {
             this.eventValidator(evento)
             this.eventosDAO.agregar(evento)
         } catch (error) {
-            throw new Error(error.message)
+            return new Error(error.message)
         }
     }
 }

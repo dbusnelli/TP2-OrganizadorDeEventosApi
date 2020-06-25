@@ -10,12 +10,22 @@ function getEventRouter() {
     const router = express.Router()
 
     router.post('/', async (req, res) => {
+        console.log("posteaste")
         const nuevoEvento = req.body
 
         try {
             const evento = await eventosApi.crearEvento(nuevoEvento)
             res.status(201).json(evento)
         } catch (err) {
+            res.status(err.status).json(err)
+        }
+    })
+
+    router.get('/', async (req, res) => {
+        try {
+            const eventos = await eventosApi.getAll()
+            res.status(200).json(eventos)
+        } catch {
             res.status(err.status).json(err)
         }
     })
@@ -49,6 +59,7 @@ function getEventRouter() {
         }
 
     })
+    return router
 }
 
 export {

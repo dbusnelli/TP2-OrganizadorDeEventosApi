@@ -1,8 +1,8 @@
 class InvitadosDAO {
 
     constructor() {
-        invitados = []
-        proxId = 0
+        this.invitados = []
+        this.proxId = 0
     }
 
     async agregar(nuevoInvitado) {

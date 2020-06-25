@@ -1,5 +1,4 @@
-const fetch = require ('node-fetch')
-const apiVerCoordDeIP = require ('../moduloVerCoordDeIP/app.js')
+import fetch from 'node-fetch'
 
 const api_url = 'https://places.ls.hereapi.com/places/v1/autosuggest?'
 

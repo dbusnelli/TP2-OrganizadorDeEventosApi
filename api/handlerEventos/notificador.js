@@ -1,5 +1,9 @@
 import enviarMail from '../../mail/send.js'
 
-module.exports = (contacto,asunto,mensaje) => {
+async function notificar (contacto,asunto,mensaje) {
     enviarMail(contacto,asunto,mensaje)
+}
+
+export {
+    notificar
 }

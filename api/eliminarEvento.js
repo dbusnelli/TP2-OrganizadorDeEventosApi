@@ -1,4 +1,4 @@
-import { notificar } from '../mail/send.js'
+import notificar from '../mail/send.js'
 
 async function eliminarEvento(eventosDAO,invitadosDAO,idEvento){
     try {

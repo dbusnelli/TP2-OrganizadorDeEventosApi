@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi')
+import Joi from '@hapi/joi'
 
 function validarEvento(evento){
     const eventoSchema = {
@@ -14,6 +14,5 @@ function validarEvento(evento){
         throw { message: error.message, status: 400 }
     }
 }
-
 
 export default{validarEvento}

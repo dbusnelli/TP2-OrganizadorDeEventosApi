@@ -1,4 +1,4 @@
-const fetch = require ('node-fetch')
+import fetch from 'node-fetch'
 
 const api_url = 'http://api.ipapi.com/api/check?access_key='
 
