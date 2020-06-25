@@ -2,6 +2,7 @@
   "name": "mail",
   "version": "1.0.0",
   "description": "modulo que manda mails",
+  "main":"send.js",
   "scripts": {
     "test": "node testSend.js"
   },

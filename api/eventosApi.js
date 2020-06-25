@@ -1,7 +1,6 @@
 import validarEvento from '../validaciones/eventos'
 import validarInvitado from '../validaciones/invitados'
-
-import notificar from './handlerEventos/notificador'
+import notificar from '../mail/send.js'
 import calcularDistancia from './handlerEventos/calculoDistancia'
 import eliminarEvento from './eliminarEvento.js'
 import CrearEvento from './crearEvento.js'
@@ -15,7 +14,6 @@ class EventosApi {
     }
 
     async crearEvento(evento){ 
-        //eventoNuevo = {id:"",nombre:nombre,direccion:direccion,fecha:fecha,creador:creador,contacto:contacto}
         this.creadorEventos.run(evento)
     }
 
@@ -39,7 +37,7 @@ class EventosApi {
 
             let mensaje = "Ha sido invitado al evento "+evento.nombre+" el dia..."
             
-            notificar(contactoInvitado,mensaje)
+            notificar(contactoInvitado,'invitación a evento',mensaje)
 
         } catch (error) {
             console.log(error)
@@ -73,3 +71,4 @@ class EventosApi {
 
     }
 }
+module.exports = EventosApi

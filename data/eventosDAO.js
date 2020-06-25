@@ -35,12 +35,6 @@ class EventosDAO {
 
 }
 
-
-class Evento{
-    
-}
-
-
 export {
     EventosDAO
 }

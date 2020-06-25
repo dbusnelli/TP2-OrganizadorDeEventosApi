@@ -1,8 +1,7 @@
-import notificar from './handlerEventos/notificador'
+import notificar from '../mail/send.js'
 
 async function eliminarEvento(eventosDAO,invitadosDAO,idEvento){
     try {
-
         let evento = await eventosDAO.getById(idEvento)
         eventosDAO.EliminarEvento(idEvento)
         
@@ -23,9 +22,9 @@ async function eliminarEvento(eventosDAO,invitadosDAO,idEvento){
 async function notificarEventoCancelado(invitados,evento){
     
     let mensaje = "El evento "+evento.nombre+" del dia: "+evento.fecha+". Ha sido cancelado."
-
+    const asunto = "Evento cancelado"
     invitados.forEach(invitado => {
-        notificar(invitado.contacto,mensaje)
+        notificar(invitado.contacto,asunto,mensaje)
     });
 }
 

@@ -93,6 +93,8 @@ function main(){
 	let passed = 0
 	let errors = 0
 
+	console.log('test de modulo de emails')
+
 	for (const test of tests){
 		console.log('test '+(done+1))
 		let x = test()

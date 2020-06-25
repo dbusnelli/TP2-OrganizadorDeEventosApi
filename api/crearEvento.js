@@ -13,3 +13,6 @@ class CrearEvento {
         }
     }
 }
+export{
+    CrearEvento
+}
