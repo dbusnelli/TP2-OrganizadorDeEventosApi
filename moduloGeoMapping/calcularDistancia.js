@@ -15,6 +15,6 @@ async function calcularDistancia(coord1,coord2)
     return d.toFixed(3); //Retorna tres decimales
 }
 
-module.exports = {
+export {
     calcularDistancia
 }

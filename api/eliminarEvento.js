@@ -1,4 +1,4 @@
-import notificar from './handlerEventos/notificador'
+import { notificar } from './handlerEventos/notificador.js'
 
 async function eliminarEvento(eventosDAO,invitadosDAO,idEvento){
     try {

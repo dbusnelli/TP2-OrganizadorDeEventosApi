@@ -1,7 +1,7 @@
-import EventosDAO from '../data/eventosDAO'
-import InvitadosDAO from '../data/invitadosDAO'
+import {EventosDAO} from '../data/eventosDAO.js'
+import {InvitadosDAO} from '../data/invitadosDAO.js'
 import express from 'express'
-import EventosApi from '../api/eventosApi'
+import {EventosApi} from '../api/eventosApi.js'
 
 function getEventRouter() {
     const eventosDAO = new EventosDAO()
@@ -9,7 +9,7 @@ function getEventRouter() {
     const eventosApi = new EventosApi(eventosDAO, invitadosDAO)
     const router = express.Router()
 
-    router.post('/eventos', async (req, res) => {
+    router.post('/', async (req, res) => {
         const nuevoEvento = req.body
 
         try {
@@ -20,7 +20,7 @@ function getEventRouter() {
         }
     })
 
-    router.post('/eventos/:id/invitados', async (req, res) => {
+    router.post('/:id/invitados', async (req, res) => {
         const nuevoInvitado = req.body
 
         try {
@@ -31,7 +31,7 @@ function getEventRouter() {
         }
     })
 
-    router.put('/eventos/:idEvento/invitados/:idInvitado', async(req, res) => {
+    router.put('/:idEvento/invitados/:idInvitado', async(req, res) => {
         try {
             await eventosApi.confirmarAsistencia(req.params.idInvitado)
             res.status(200).send()
@@ -40,7 +40,7 @@ function getEventRouter() {
         }
     })
 
-    router.delete('/eventos/:id', async (req, res) => {
+    router.delete('/:id', async (req, res) => {
         try {
             await eventosApi.eliminar(req.params.id)
             res.status(204).send()
@@ -49,5 +49,8 @@ function getEventRouter() {
         }
 
     })
+}
 
+export {
+    getEventRouter
 }

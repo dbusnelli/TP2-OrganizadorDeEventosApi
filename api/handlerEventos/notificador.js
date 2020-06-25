@@ -1,4 +1,4 @@
-import enviarMail from '../../mail/main'
+import enviarMail from '../../mail/main.js'
 
 function notificar(contacto,mensaje){
     enviarMail(contacto,mensaje)

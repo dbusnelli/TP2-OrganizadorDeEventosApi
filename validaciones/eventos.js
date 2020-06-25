@@ -11,7 +11,7 @@ function validarEvento(evento){
     }
     const { error } = Joi.validate(evento, eventoSchema)
     if (error) {
-        throw { message: error.message }
+        throw { message: error.message, status: 400 }
     }
 }
 

@@ -1,10 +1,10 @@
-import validarEvento from '../validaciones/eventos'
-import validarInvitado from '../validaciones/invitados'
+import {validarEvento} from '../validaciones/eventos.js'
+import {validarInvitado} from '../validaciones/invitados.js'
 
-import notificar from './handlerEventos/notificador'
-import calcularDistancia from './handlerEventos/calculoDistancia'
-import eliminarEvento from './eliminarEvento.js'
-import CrearEvento from './crearEvento.js'
+import {notificar} from './handlerEventos/notificador.js'
+import {calcDistancia} from './handlerEventos/calculoDistancia.js'
+import {eliminarEvento} from './eliminarEvento.js'
+import {CrearEvento} from './crearEvento.js'
 
 
 class EventosApi {
@@ -53,7 +53,7 @@ class EventosApi {
         try {
             let evento = this.eventosDAO.getById(invitado.getIdEvento())
 
-            let distancia = calcularDistancia(evento.getDireccion());
+            let distancia = calcDistancia(evento.getDireccion());
             console.log('La distancia al evento es de: '+distancia+' metros')
 
         } catch (error) {
@@ -72,4 +72,8 @@ class EventosApi {
         
 
     }
+}
+
+export {
+    EventosApi
 }
