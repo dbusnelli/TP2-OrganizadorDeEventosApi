@@ -1,10 +1,10 @@
-import validarEvento from '../validaciones/eventos'
-import validarInvitado from '../validaciones/invitados'
+import {validarEvento} from '../validaciones/eventos'
+import validarInvitado from'../validaciones/invitados'
+
 import notificar from '../mail/send.js'
 import calcularDistancia from './handlerEventos/calculoDistancia'
-import eliminarEvento from './eliminarEvento.js'
+import eliminarEvento from  './eliminarEvento.js'
 import CrearEvento from './crearEvento.js'
-
 
 class EventosApi {
     constructor(eventosDAO, invitadosDAO) {
@@ -71,4 +71,7 @@ class EventosApi {
 
     }
 }
-module.exports = EventosApi
+
+export default{
+    EventosApi
+}

@@ -1,5 +1,4 @@
 import {EventosApi} from '../api/eventosApi.js'
-import send from '../mail/testSend.js'
 
 const eventosApi = new EventosApi()
 

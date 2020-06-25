@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi'
+const Joi = require('@hapi/joi')
 
 function validarInvitado(invitado){
     const invitadoSchema = {
@@ -14,6 +14,4 @@ function validarInvitado(invitado){
 }
 
 
-export {
-    validarInvitado
-}
+module.exports = validarInvitado

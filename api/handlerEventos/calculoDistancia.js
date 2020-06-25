@@ -1,6 +1,6 @@
-import {ApiBuscarDirecTraerCoord} from '../../moduloGeoMapping/moduloBuscarDirecTraerCoord/app.js'
-import {ApiVerCoordDeIP} from '../../moduloGeoMapping/moduloVerCoordDeIP/app.js'
-import calcularDistancia from '../../moduloGeoMapping/calcularDistancia'
+const {ApiBuscarDirecTraerCoord} = require('../../moduloGeoMapping/moduloBuscarDirecTraerCoord/app.js')
+const {ApiVerCoordDeIP} = require('../../moduloGeoMapping/moduloVerCoordDeIP/app.js')
+const calcularDistancia = require('../../moduloGeoMapping/calcularDistancia')
 
 
 import apiKeys from '../../apiKeys'

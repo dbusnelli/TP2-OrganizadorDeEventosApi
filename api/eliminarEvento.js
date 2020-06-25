@@ -1,4 +1,4 @@
-import notificar from '../mail/send.js'
+const notificar = require('../mail/send.js')
 
 async function eliminarEvento(eventosDAO,invitadosDAO,idEvento){
     try {
