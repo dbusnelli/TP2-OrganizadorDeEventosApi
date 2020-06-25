@@ -1,5 +1,4 @@
-const Joi = require('@hapi/joi')
-
+import Joi from 'joi'
 function validarInvitado(invitado){
     const invitadoSchema = {
         //id: Joi.number().integer().min(0),
@@ -12,6 +11,4 @@ function validarInvitado(invitado){
         throw { message: error.message }
     }
 }
-
-
-module.exports = validarInvitado
+export default{validarInvitado}
