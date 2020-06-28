@@ -18,11 +18,11 @@ class EventosDAO {
             throw 'evento para eliminar no encontrado con id ' + id
         }
 
-        eventos.splice(index,1)
+        this.eventos.splice(index,1)
     }
 
     async getAll(){
-        return eventos
+        return this.eventos
     }
 
     async getById(id) {

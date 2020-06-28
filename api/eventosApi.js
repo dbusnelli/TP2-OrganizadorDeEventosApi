@@ -1,4 +1,4 @@
-import validarEvento from '../validaciones/eventos.js'
+import {ValidadorEvento} from '../validaciones/eventos.js'
 import validarInvitado from '../validaciones/invitados.js'
 
 import {notificar} from './handlerEventos/notificador.js'
@@ -11,12 +11,12 @@ class EventosApi {
     constructor(eventosDAO, invitadosDAO) {
         this.eventosDAO = eventosDAO
         this.invitadosDAO = invitadosDAO
-        this.creadorEventos = new CrearEvento(eventosDAO, validarEvento)
+        this.creadorEventos = new CrearEvento(eventosDAO, new ValidadorEvento())
         this.getterEventos = new GetterEventos(eventosDAO)
     }
 
     async crearEvento(evento){ 
-        return this.creadorEventos.run(evento)
+        return await this.creadorEventos.run(evento)
     }
 
     async eliminar(idEvento) {
@@ -24,7 +24,7 @@ class EventosApi {
     }
 
     async getAll() {
-        return this.getterEventos.obtenerTodos()
+        return await this.getterEventos.obtenerTodos()
     }
 
 

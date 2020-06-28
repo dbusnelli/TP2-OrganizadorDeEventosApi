@@ -3,11 +3,11 @@ class GetterEventos {
         this.eventosDAO = eventosDAO
     }
 
-    obtenerTodos() {
+    async obtenerTodos() {
         try {
-            this.eventosDAO.getAll()
+            return await this.eventosDAO.getAll()
         } catch (error) {
-            throw new Error(error.message)
+            throw {status: 500, message: error.message}
         }
     }
 }

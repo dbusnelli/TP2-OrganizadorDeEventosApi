@@ -4,12 +4,12 @@ class CrearEvento {
         this.eventValidator = eventValidator
     }
 
-    run(evento) {
+    async run(evento) {
         try {
-            this.eventValidator(evento)
-            this.eventosDAO.agregar(evento)
+            this.eventValidator.validar(evento)
+            return await this.eventosDAO.agregar(evento)
         } catch (error) {
-            return new Error(error.message)
+            throw {status: 500, message: error.message}
         }
     }
 }
