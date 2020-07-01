@@ -9,20 +9,20 @@ class EliminarEvento {
 
     async eliminar(idEvento) {
         try {
-            let evento = await eventosDAO.getById(idEvento)
-            eventosDAO.EliminarEvento(idEvento)
+            let evento = await this.eventosDAO.getById(idEvento)
+            await this.eventosDAO.eliminarEvento(idEvento)
 
-            let invitados = invitadosDAO.getByIdEvento(idEvento)
+            let invitados = await this.invitadosDAO.getByIdEvento(idEvento)
 
             if (invitados.length > 0) {
-                notificarEventoCancelado(invitados, evento)
-                invitados.forEach(invitado => {
-                    invitadosDAO.eliminarInvitado(invitado.id)
+                await notificarEventoCancelado(invitados, evento)
+                await invitados.forEach(invitado => {
+                    this.invitadosDAO.eliminarInvitado(invitado.id)
                 });
             }
 
         } catch (error) {
-            throw error
+            throw {status: 500, message: error.message + error}
         }
     }
 

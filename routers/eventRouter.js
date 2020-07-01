@@ -1,12 +1,8 @@
-import {EventosDAO} from '../data/eventosDAO.js'
-import {InvitadosDAO} from '../data/invitadosDAO.js'
 import express from 'express'
 import {EventosApi} from '../api/eventosApi.js'
 
 function getEventRouter() {
-    const eventosDAO = new EventosDAO()
-    const invitadosDAO = new InvitadosDAO()
-    const eventosApi = new EventosApi(eventosDAO, invitadosDAO)
+    const eventosApi = new EventosApi()
     const router = express.Router()
 
     router.post('/', async (req, res) => {
