@@ -3,16 +3,19 @@ import validarInvitado from '../validaciones/invitados.js'
 
 import {notificar} from './handlerEventos/notificador.js'
 import {calcDistancia} from './handlerEventos/calculoDistancia.js'
-import {eliminarEvento} from './eliminarEvento.js'
+import {EliminarEvento} from './eliminarEvento.js'
 import {CrearEvento} from './crearEvento.js'
 import {GetterEventos} from './GetterEventos.js'
+import {EventosDAO} from '../data/eventosDAO.js'
+import {InvitadosDAO} from '../data/invitadosDAO.js'
 
 class EventosApi {
-    constructor(eventosDAO, invitadosDAO) {
-        this.eventosDAO = eventosDAO
-        this.invitadosDAO = invitadosDAO
-        this.creadorEventos = new CrearEvento(eventosDAO, new ValidadorEvento())
-        this.getterEventos = new GetterEventos(eventosDAO)
+    constructor() {
+        this.eventosDAO = new EventosDAO()
+        this.invitadosDAO = new InvitadosDAO()
+        this.creadorEventos = new CrearEvento(this.eventosDAO, new ValidadorEvento())
+        this.getterEventos = new GetterEventos(this.eventosDAO)
+        this.eliminarEvento = new EliminarEvento(this.eventosDAO, this.invitadosDAO)
     }
 
     async crearEvento(evento){ 
@@ -20,7 +23,7 @@ class EventosApi {
     }
 
     async eliminar(idEvento) {
-        eliminarEvento(this.eventosDAO, this.invitadosDAO, idEvento)
+        await this.eliminarEvento.eliminar(idEvento)
     }
 
     async getAll() {

@@ -1,14 +1,13 @@
 import Joi from 'joi'
 function validarInvitado(invitado){
     const invitadoSchema = {
-        //id: Joi.number().integer().min(0),
-        idEvento: Joi.string().alphanum().min(1).required(),
-        nombre: Joi.string().alphanum().min(1).required(),
+        idEvento: Joi.string().min(1).required(),
+        nombre: Joi.string().min(1).required(),
         contacto: Joi.string().email().max(999).required()
     }
     const { error } = Joi.validate(invitado, invitadoSchema)
     if (error) {
-        throw { message: error.message }
+        throw { message: error.message, status: 400 }
     }
 }
 export default{validarInvitado}

@@ -7,7 +7,6 @@ class ValidadorEvento {
     
     validar(evento){
         const eventoSchema = Joi.object({
-            //id: Joi.number().integer().min(0),
             nombre: Joi.string().min(1).required(),
             direccion: Joi.string().min(1).required(),
             fecha: Joi.date().iso().required(),

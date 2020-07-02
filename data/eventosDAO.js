@@ -13,9 +13,9 @@ class EventosDAO {
     }
 
     async eliminarEvento(id){
-        const index = eventos.findIndex(e => e.id == id)
+        const index = this.eventos.findIndex(e => e.id == id)
         if(index == -1){
-            throw 'evento para eliminar no encontrado con id ' + id
+            throw {status: 404, message: 'evento para eliminar no encontrado con id ' + id}
         }
 
         this.eventos.splice(index,1)
@@ -26,9 +26,9 @@ class EventosDAO {
     }
 
     async getById(id) {
-        const buscado = eventos.find(e => e.id == id)
+        const buscado = this.eventos.find(e => e.id == id)
         if (!buscado) {
-            throw 'evento no encontrado con id ' + id
+            throw {status: 404, message: 'evento no encontrado con id ' + id}
         }
         return [buscado]
     }

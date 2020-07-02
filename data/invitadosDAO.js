@@ -13,19 +13,16 @@ class InvitadosDAO {
     }
 
     async eliminarInvitado(id){
-        const index = invitados.findIndex(e => e.id == id)
+        const index = this.invitados.findIndex(e => e.id == id)
         if(index == -1){
-            throw 'evento para eliminar no encontrado con id ' + id
+            throw {status: 400, message: 'invitado para eliminar no encontrado con id ' + id}
         }
 
         eventos.splice(index,1)
     }
 
     async getByIdEvento(idEvento){
-        const buscados = invitados.filter(e => e.idEvento == idEvento)
-        if(buscados.length == 0){
-            throw 'no se encontraron invitados para el evento con id ' + id
-        }
+        const buscados = this.invitados.filter(e => e.idEvento == idEvento)
         return buscados
     }
 
@@ -34,9 +31,9 @@ class InvitadosDAO {
     }
 
     async getById(id) {
-        const buscado = invitados.find(e => e.id == id)
+        const buscado = this.invitados.find(e => e.id == id)
         if (!buscado) {
-            throw 'invitado no encontrado con id ' + id
+            throw {status: 400, message: 'invitado no encontrado con id ' + id}
         }
         return [buscado]
     }
