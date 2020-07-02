@@ -35,6 +35,6 @@ class EventosDAO {
 
 }
 
-export {
+export default{
     EventosDAO
 }

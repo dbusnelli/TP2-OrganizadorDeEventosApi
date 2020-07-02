@@ -43,6 +43,6 @@ class InvitadosDAO {
 
 }
 
-export {
+export default{
     InvitadosDAO
 }

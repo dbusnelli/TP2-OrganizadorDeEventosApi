@@ -11,6 +11,7 @@ function enviarMailCorrectoConAsuntoyMensaje(){
 		const asunto = 'test 1'
 		const mensaje = 'enviarMailCorrectoConAsuntoyMensaje'
 		send(destinatario,asunto,mensaje)
+		resultado.mensaje = 'mail enviado correctamente'
 	}catch(e){
 		resultado.error = true
 		resultado.mensaje += e
@@ -26,8 +27,10 @@ function enviarMailConAsuntoVacio(){
 	try{
 		send(destinatario)
 	}catch(e){
-		resultado.error = true
 		resultado.mensaje += e
+		if(e != 'el asunto no puede estar vacio'){
+			resultado.error = true
+		}
 	}
 	return resultado
 }
@@ -41,8 +44,10 @@ function enviarMailConAsuntoVacioAVariosDestinatarios(){
 	try{
 		send(destinatarios)
 	}catch(e){
-		resultado.error = true
 		resultado.mensaje += e
+		if(e != 'el asunto no puede estar vacio'){
+			resultado.error = true
+		}
 	}
 	return resultado
 }
@@ -57,6 +62,7 @@ function enviarMailCorrectoAVariosDestinatarios(){
 		const asunto = 'test 4'
 		const mensaje = 'enviarMailCorrectoAVariosDestinatarios'
 		send(destinatarios,asunto,mensaje)
+		resultado.mensaje = 'mail enviado correctamente'
 	}catch(e){
 		resultado.error = true
 		resultado.mensaje += e
@@ -74,8 +80,10 @@ function enviarMailSinMensaje(){
 		const asunto = 'test 4'
 		send(destinatarios,asunto)
 	}catch(e){
-		resultado.error = true
 		resultado.mensaje += e
+		if(e != 'el mensaje no puede estar vacio'){
+			resultado.error = true
+		}
 	}
 	return resultado
 }
@@ -100,16 +108,14 @@ function main(){
 		let x = test()
 		if(x.error){
 			errors++
-			console.log(x.mensaje)
 		}else{
 			passed++
-			console.log(sent)
 		}
+		console.log(x.mensaje+'\n')
 		done++
-		console.log('')
 	}
-	console.log('errores: '+errors)
-	console.log('pasados: '+passed)
-	console.log('terminados: '+done)
+	console.log('errores inesperados: '+errors)
+	console.log('tests pasados: '+passed)
+	console.log('tests terminados: '+done)
 }
 main()

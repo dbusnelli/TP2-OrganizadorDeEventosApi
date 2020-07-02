@@ -21,6 +21,6 @@ class ValidadorEvento {
     }
 }
 
-export {
+export default{
     ValidadorEvento
 }
