@@ -15,6 +15,7 @@ class ValidadorEvento {
         })
         const { error } = eventoSchema.validate(evento)
         if (error) {
+            console.log("error valid")
             throw { message: error.message, status: 400 }
         }
     }
